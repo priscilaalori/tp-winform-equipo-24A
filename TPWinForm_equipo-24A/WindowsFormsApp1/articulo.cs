@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    internal class articulo
+    public class Articulo
     {
-        private int codArticulo;
-        private string nombreArticulo;
-        private string Descripcion;
+ 
+  
+
+        public Marca Marca { get; set; }
+
+        public int CodArticulo { get; set; }
+
+        public string NombreArticulo { get; set; }
+
+        public string Descripcion { get; set; } 
+
 
     }
 }

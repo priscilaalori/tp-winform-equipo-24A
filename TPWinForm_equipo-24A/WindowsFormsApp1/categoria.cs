@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    internal class categoria
+    public class Categoria
     {
     }
 }
