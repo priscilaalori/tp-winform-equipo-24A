@@ -19,19 +19,25 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Articulo articuloNuevo = new Articulo();
-            string nombre = txtArticulo.Text;
-            string marca = txtMarca.Text;
-            string categoria = txtCategoria.Text;
-            string precio = txtPrecio.Text;
-            string descripcion = txtDescripcion.Text;
-
+            
             
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string texto1 = ((TextBox)sender).Text;
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Articulo articuloNuevo = new Articulo();
+            articuloNuevo.NombreArticulo = txtArticulo.Text;
+           // string marca = txtMarca.Text;
+            //string categoria = txtCategoria.Text;
+            articuloNuevo.Precio = float.Parse(txtPrecio.Text);
+            articuloNuevo.Descripcion = txtDescripcion.Text;
+
+            
         }
     }
 }

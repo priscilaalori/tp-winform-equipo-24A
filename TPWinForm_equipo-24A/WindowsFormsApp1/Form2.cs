@@ -23,5 +23,10 @@ namespace WindowsFormsApp1
             ventana.ShowDialog();
         }
 
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            frmListaProductos frmListaProductos = new frmListaProductos(); 
+            frmListaProductos.ShowDialog();
+        }
     }
 }

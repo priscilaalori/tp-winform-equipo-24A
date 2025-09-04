@@ -16,6 +16,8 @@ namespace WindowsFormsApp1
         public float Precio {  get; set; }
         public string Descripcion { get; set; } 
 
+        public string Imagen {  get; set; }
+
 
     }
 }
