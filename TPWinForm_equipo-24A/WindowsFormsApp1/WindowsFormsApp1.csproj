@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="articulo.cs" />
     <Compile Include="categoria.cs" />
+    <Compile Include="Metodos.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

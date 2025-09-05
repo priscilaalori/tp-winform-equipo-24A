@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
             articuloNuevo.NombreArticulo = txtArticulo.Text;
            // string marca = txtMarca.Text;
             //string categoria = txtCategoria.Text;
-            articuloNuevo.Precio = float.Parse(txtPrecio.Text);
+            articuloNuevo.Precio = decimal.Parse(txtPrecio.Text);
             articuloNuevo.Descripcion = txtDescripcion.Text;
 
             

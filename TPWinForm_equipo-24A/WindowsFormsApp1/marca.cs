@@ -12,5 +12,6 @@ namespace WindowsFormsApp1
         public string NombreMarca { get; set; }
 
         public string Descripcion { get; set; }
+
     }
 }
