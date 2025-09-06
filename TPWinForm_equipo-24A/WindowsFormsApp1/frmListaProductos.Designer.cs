@@ -105,6 +105,7 @@
             this.dgvArt.Name = "dgvArt";
             this.dgvArt.Size = new System.Drawing.Size(360, 245);
             this.dgvArt.TabIndex = 13;
+            this.dgvArt.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArt_CellContentClick);
             // 
             // frmListaProductos
             // 

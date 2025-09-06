@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Dominio;
 
-namespace WindowsFormsApp1
+
+namespace Negocio
+
 {
     public class CategoriaNegocio
     {

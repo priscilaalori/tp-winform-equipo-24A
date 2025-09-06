@@ -35,18 +35,21 @@
             // dgvCategoria
             // 
             this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCategoria.Location = new System.Drawing.Point(28, 33);
+            this.dgvCategoria.Location = new System.Drawing.Point(14, 17);
+            this.dgvCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvCategoria.Name = "dgvCategoria";
             this.dgvCategoria.RowHeadersWidth = 82;
-            this.dgvCategoria.Size = new System.Drawing.Size(504, 531);
+            this.dgvCategoria.Size = new System.Drawing.Size(252, 276);
             this.dgvCategoria.TabIndex = 0;
+            this.dgvCategoria.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoria_CellContentClick);
             // 
             // fmrListaCategorias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 606);
+            this.ClientSize = new System.Drawing.Size(500, 315);
             this.Controls.Add(this.dgvCategoria);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "fmrListaCategorias";
             this.Text = "fmrListaCategorias";
             this.Load += new System.EventHandler(this.fmrListaCategorias_Load);

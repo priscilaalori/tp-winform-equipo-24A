@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
 
 namespace WindowsFormsApp1
 {
@@ -19,7 +20,7 @@ namespace WindowsFormsApp1
 
         private void frmLista_Load(object sender, EventArgs e)
         {
-            Metodos listaArticulos = new Metodos();
+            ArticuloNegocio listaArticulos = new ArticuloNegocio();
             dgvArt.DataSource = listaArticulos.listarArticulos();
             // Oculto el Precio "real"
             dgvArt.Columns["Precio"].Visible = false;
@@ -32,12 +33,17 @@ namespace WindowsFormsApp1
 
         private void frmLista_warning(object sender, EventArgs e)
         {
-            Metodos listaArticulos = new Metodos();
+            ArticuloNegocio listaArticulos = new ArticuloNegocio();
             var lista = listaArticulos.listarArticulos();
 
             MessageBox.Show("Se encontraron " + lista.Count + " artículos.");
 
             dgvArt.DataSource = lista;
+        }
+
+        private void dgvArt_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

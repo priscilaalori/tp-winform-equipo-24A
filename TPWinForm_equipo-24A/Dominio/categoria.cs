@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1
+namespace Dominio
 {
-    public  class Marca
+    public class Categoria
     {
-        public int IdMarca { get; set; }
-        public string NombreMarca { get; set; }
-
+        public int IdCategoria { get; set; } 
         public string Descripcion { get; set; }
 
+        public override string ToString()
+        {
+            return Descripcion;
+        }
     }
 }

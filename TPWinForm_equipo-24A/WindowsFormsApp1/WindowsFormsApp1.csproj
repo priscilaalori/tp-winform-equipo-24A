@@ -46,27 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="articulo.cs" />
-    <Compile Include="categoria.cs" />
-    <Compile Include="CategoriaNegocio.cs" />
     <Compile Include="fmrListaCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fmrListaCategorias.Designer.cs">
       <DependentUpon>fmrListaCategorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Metodos.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="VENTANADECARGA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="VENTANADECARGA.Designer.cs">
+      <DependentUpon>VENTANADECARGA.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="BIENVENIDOS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="BIENVENIDOS.Designer.cs">
+      <DependentUpon>BIENVENIDOS.cs</DependentUpon>
     </Compile>
     <Compile Include="frmListaProductos.cs">
       <SubType>Form</SubType>
@@ -74,17 +70,16 @@
     <Compile Include="frmListaProductos.Designer.cs">
       <DependentUpon>frmListaProductos.cs</DependentUpon>
     </Compile>
-    <Compile Include="marca.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fmrListaCategorias.resx">
       <DependentUpon>fmrListaCategorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="VENTANADECARGA.resx">
+      <DependentUpon>VENTANADECARGA.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="BIENVENIDOS.resx">
+      <DependentUpon>BIENVENIDOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListaProductos.resx">
       <DependentUpon>frmListaProductos.cs</DependentUpon>
@@ -110,6 +105,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{9a47dbd1-598b-4726-8678-c24d54c45f86}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{675fdfba-564f-46fa-93ca-329afde17e7a}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
