@@ -16,8 +16,6 @@ namespace WindowsFormsApp1
             SqlCommand comando = new SqlCommand();
             SqlDataReader lector;
 
-
-
             try
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";

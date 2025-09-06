@@ -28,5 +28,11 @@ namespace WindowsFormsApp1
             frmListaProductos frmListaProductos = new frmListaProductos(); 
             frmListaProductos.ShowDialog();
         }
+
+        private void btnCategoria_Click(object sender, EventArgs e)
+        {
+            fmrListaCategorias fmrListaCategorias = new fmrListaCategorias();
+            fmrListaCategorias.ShowDialog();
+        }
     }
 }

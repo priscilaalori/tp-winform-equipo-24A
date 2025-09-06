@@ -30,6 +30,7 @@
         {
             this.btnIngresar = new System.Windows.Forms.Button();
             this.btnListar = new System.Windows.Forms.Button();
+            this.btnCategoria = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnIngresar
@@ -52,11 +53,22 @@
             this.btnListar.UseVisualStyleBackColor = true;
             this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
+            // btnCategoria
+            // 
+            this.btnCategoria.Location = new System.Drawing.Point(331, 292);
+            this.btnCategoria.Name = "btnCategoria";
+            this.btnCategoria.Size = new System.Drawing.Size(278, 70);
+            this.btnCategoria.TabIndex = 5;
+            this.btnCategoria.Text = "Listar Categorías";
+            this.btnCategoria.UseVisualStyleBackColor = true;
+            this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click);
+            // 
             // FmrInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(966, 720);
+            this.Controls.Add(this.btnCategoria);
             this.Controls.Add(this.btnListar);
             this.Controls.Add(this.btnIngresar);
             this.Name = "FmrInicio";
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnListar;
+        private System.Windows.Forms.Button btnCategoria;
     }
 }
