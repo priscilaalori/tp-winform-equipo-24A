@@ -52,10 +52,16 @@
     <Compile Include="fmrListaCategorias.Designer.cs">
       <DependentUpon>fmrListaCategorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListaMarcas.cs">
+    <Compile Include="Marca\frmAgregarMarca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListaMarcas.Designer.cs">
+    <Compile Include="Marca\frmAgregarMarca.Designer.cs">
+      <DependentUpon>frmAgregarMarca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marca\frmListaMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Marca\frmListaMarcas.Designer.cs">
       <DependentUpon>frmListaMarcas.cs</DependentUpon>
     </Compile>
     <Compile Include="VENTANADECARGA.cs">
@@ -81,7 +87,10 @@
     <EmbeddedResource Include="fmrListaCategorias.resx">
       <DependentUpon>fmrListaCategorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListaMarcas.resx">
+    <EmbeddedResource Include="Marca\frmAgregarMarca.resx">
+      <DependentUpon>frmAgregarMarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Marca\frmListaMarcas.resx">
       <DependentUpon>frmListaMarcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VENTANADECARGA.resx">

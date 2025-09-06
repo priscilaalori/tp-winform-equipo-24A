@@ -73,7 +73,7 @@
             this.btnMarca.Name = "btnMarca";
             this.btnMarca.Size = new System.Drawing.Size(139, 36);
             this.btnMarca.TabIndex = 5;
-            this.btnMarca.Text = "Listar Marcas";
+            this.btnMarca.Text = "Administrar Marcas";
             this.btnMarca.UseVisualStyleBackColor = true;
             this.btnMarca.Click += new System.EventHandler(this.btnMarca_Click);
             // 

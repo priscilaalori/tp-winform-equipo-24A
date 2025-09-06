@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,34 +15,54 @@ namespace Negocio
         public List<Marca> Listar()
         {
             List<Marca> listaMarcas = new List<Marca>();
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
-            SqlDataReader lector;
+            AccesoDatos datos = new AccesoDatos();  
+
             try
             {
-                conexion.ConnectionString = "server =.\\SQLEXPRESS; database= CATALOGO_P3_DB; integrated security = true;";
-                comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select Id, Descripcion From Marcas";
-                comando.Connection = conexion;
+                datos.setearConsulta( "Select Id, Descripcion From Marcas");
+                datos.ejecutarLecura();
 
-                conexion.Open();
-                lector = comando.ExecuteReader();
 
-                while (lector.Read())
+                while (datos.Lector.Read())
                 {
                     Marca marcaAuxiliar = new Marca();
-                    marcaAuxiliar.IdMarca = (int)lector["Id"];
-                    marcaAuxiliar.Descripcion = (string)lector["Descripcion"];
+                    marcaAuxiliar.IdMarca = (int)datos.Lector["Id"];
+                    marcaAuxiliar.Descripcion = (string)datos.Lector["Descripcion"];
 
                     listaMarcas.Add(marcaAuxiliar);
                 }
 
-                conexion.Close();
+               
                 return listaMarcas;
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void agregar (Marca nuevaMarca)  
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+
+            try
+            {
+                datos.setearConsulta("INSERT INTO MARCAS (Descripcion) VALUES ('" + nuevaMarca.Descripcion + "')");
+                    datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion(); 
             }
         }
     }

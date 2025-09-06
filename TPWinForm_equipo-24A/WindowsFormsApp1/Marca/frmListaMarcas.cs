@@ -28,5 +28,11 @@ namespace WindowsFormsApp1
             MarcaNegocio negocio = new MarcaNegocio();
             dgvMarcas.DataSource = negocio.Listar();
         }
+
+        private void btnAgregarMarca_Click(object sender, EventArgs e)
+        {
+            frmAgregarMarca frmAgregarMarca = new frmAgregarMarca();
+            frmAgregarMarca.ShowDialog();
+        }
     }
 }
