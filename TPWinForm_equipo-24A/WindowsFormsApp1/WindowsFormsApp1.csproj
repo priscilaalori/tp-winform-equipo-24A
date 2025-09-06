@@ -52,6 +52,12 @@
     <Compile Include="fmrListaCategorias.Designer.cs">
       <DependentUpon>fmrListaCategorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListaMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaMarcas.Designer.cs">
+      <DependentUpon>frmListaMarcas.cs</DependentUpon>
+    </Compile>
     <Compile Include="VENTANADECARGA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fmrListaCategorias.resx">
       <DependentUpon>fmrListaCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaMarcas.resx">
+      <DependentUpon>frmListaMarcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VENTANADECARGA.resx">
       <DependentUpon>VENTANADECARGA.cs</DependentUpon>

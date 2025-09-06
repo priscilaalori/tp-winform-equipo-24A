@@ -26,7 +26,7 @@ namespace Dominio
 
         public string NombreMarca
         {
-            get { return Marca != null ? Marca.NombreMarca : ""; }
+            get { return Marca != null ? Marca.Descripcion : ""; }
         }
 
         public string NombreCategoria

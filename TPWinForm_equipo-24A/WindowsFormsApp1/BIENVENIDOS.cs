@@ -34,5 +34,16 @@ namespace WindowsFormsApp1
             fmrListaCategorias fmrListaCategorias = new fmrListaCategorias();
             fmrListaCategorias.ShowDialog();
         }
+
+        private void FmrInicio_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMarca_Click(object sender, EventArgs e)
+        {
+            frmListaMarcas frmListaMarcas = new frmListaMarcas(); 
+            frmListaMarcas.ShowDialog();
+        }
     }
 }

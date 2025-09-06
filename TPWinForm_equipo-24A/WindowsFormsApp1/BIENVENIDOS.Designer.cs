@@ -31,13 +31,15 @@
             this.btnIngresar = new System.Windows.Forms.Button();
             this.btnListar = new System.Windows.Forms.Button();
             this.btnCategoria = new System.Windows.Forms.Button();
+            this.btnMarca = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(331, 104);
+            this.btnIngresar.Location = new System.Drawing.Point(166, 54);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(2);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(278, 65);
+            this.btnIngresar.Size = new System.Drawing.Size(139, 34);
             this.btnIngresar.TabIndex = 0;
             this.btnIngresar.Text = "Ingresar un artículo ";
             this.btnIngresar.UseVisualStyleBackColor = true;
@@ -45,9 +47,10 @@
             // 
             // btnListar
             // 
-            this.btnListar.Location = new System.Drawing.Point(331, 198);
+            this.btnListar.Location = new System.Drawing.Point(166, 103);
+            this.btnListar.Margin = new System.Windows.Forms.Padding(2);
             this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(278, 64);
+            this.btnListar.Size = new System.Drawing.Size(139, 33);
             this.btnListar.TabIndex = 4;
             this.btnListar.Text = "Listar artículos";
             this.btnListar.UseVisualStyleBackColor = true;
@@ -55,25 +58,39 @@
             // 
             // btnCategoria
             // 
-            this.btnCategoria.Location = new System.Drawing.Point(331, 292);
+            this.btnCategoria.Location = new System.Drawing.Point(166, 152);
+            this.btnCategoria.Margin = new System.Windows.Forms.Padding(2);
             this.btnCategoria.Name = "btnCategoria";
-            this.btnCategoria.Size = new System.Drawing.Size(278, 70);
+            this.btnCategoria.Size = new System.Drawing.Size(139, 36);
             this.btnCategoria.TabIndex = 5;
             this.btnCategoria.Text = "Listar Categorías";
             this.btnCategoria.UseVisualStyleBackColor = true;
             this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click);
             // 
+            // btnMarca
+            // 
+            this.btnMarca.Location = new System.Drawing.Point(166, 205);
+            this.btnMarca.Name = "btnMarca";
+            this.btnMarca.Size = new System.Drawing.Size(139, 36);
+            this.btnMarca.TabIndex = 5;
+            this.btnMarca.Text = "Listar Marcas";
+            this.btnMarca.UseVisualStyleBackColor = true;
+            this.btnMarca.Click += new System.EventHandler(this.btnMarca_Click);
+            // 
             // FmrInicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(966, 720);
+            this.ClientSize = new System.Drawing.Size(483, 374);
+            this.Controls.Add(this.btnMarca);
             this.Controls.Add(this.btnCategoria);
             this.Controls.Add(this.btnListar);
             this.Controls.Add(this.btnIngresar);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FmrInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bienvenidx";
+            this.Load += new System.EventHandler(this.FmrInicio_Load);
             this.ResumeLayout(false);
 
         }
@@ -83,5 +100,6 @@
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnListar;
         private System.Windows.Forms.Button btnCategoria;
+        private System.Windows.Forms.Button btnMarca;
     }
 }

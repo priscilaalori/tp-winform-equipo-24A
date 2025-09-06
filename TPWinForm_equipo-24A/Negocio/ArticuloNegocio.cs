@@ -50,7 +50,7 @@ namespace Negocio
                     articulo.NombreArticulo = lector["Nombre"].ToString();
                     articulo.Descripcion = lector["Descripcion"].ToString();
                     articulo.Marca.IdMarca = (int)lector["IdMarca"];
-                    articulo.Marca.NombreMarca = lector["Marca"].ToString();
+                    articulo.Marca.Descripcion = lector["Marca"].ToString();
                     articulo.Categoria.IdCategoria = (int)lector["IdCategoria"];
                     articulo.Categoria.Descripcion = lector["Categoria"].ToString();
                     articulo.Precio = (decimal)lector["Precio"];
