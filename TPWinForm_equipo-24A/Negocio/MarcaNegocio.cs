@@ -20,7 +20,7 @@ namespace Negocio
             try
             {
                 datos.setearConsulta( "Select Id, Descripcion From Marcas");
-                datos.ejecutarLecura();
+                datos.ejecutarLectura();
 
 
                 while (datos.Lector.Read())
@@ -53,7 +53,7 @@ namespace Negocio
             try
             {
                 datos.setearConsulta("INSERT INTO MARCAS (Descripcion) VALUES ('" + nuevaMarca.Descripcion + "')");
-                    datos.ejecutarAccion();
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

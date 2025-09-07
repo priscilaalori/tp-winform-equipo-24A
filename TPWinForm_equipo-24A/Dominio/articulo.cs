@@ -24,14 +24,14 @@ namespace Dominio
             get { return Precio.ToString("N2"); }
         }
 
-        public string NombreMarca
+        public int IdMarca
         {
-            get { return Marca != null ? Marca.Descripcion : ""; }
+            get { return Marca != null ? Marca.IdMarca : 0; }
         }
 
-        public string NombreCategoria
+        public int IdCategoria
         {
-            get { return Categoria != null ? Categoria.Descripcion : ""; }
+            get { return Categoria != null ? Categoria.IdCategoria : 0; }
         }
 
 

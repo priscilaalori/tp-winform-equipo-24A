@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dominio;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Negocio;
 
 namespace WindowsFormsApp1
 {
@@ -28,6 +29,8 @@ namespace WindowsFormsApp1
             dgvArt.Columns["PrecioFormateado"].HeaderText = "Precio";
             // Oculto el Marca que queda feo
             dgvArt.Columns["Marca"].Visible = false;
+            dgvArt.Columns["Imagen"].Visible = false;
+
 
         }
 
