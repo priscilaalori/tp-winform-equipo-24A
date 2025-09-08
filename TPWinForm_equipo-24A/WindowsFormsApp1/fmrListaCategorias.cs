@@ -27,5 +27,11 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void btnAgregarCat_Click(object sender, EventArgs e)
+        {
+            frmAltaCategoria frmAlta = new frmAltaCategoria();
+            frmAlta.ShowDialog();
+        }
     }
 }

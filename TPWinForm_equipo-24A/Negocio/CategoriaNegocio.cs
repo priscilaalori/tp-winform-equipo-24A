@@ -12,39 +12,43 @@ namespace Negocio
 {
     public class CategoriaNegocio
     {
+
         public List<Categoria> Listar()
         {
             List<Categoria> listaCategorias = new List<Categoria>();
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
-            SqlDataReader lector;
+            AccesoDatos datos = new AccesoDatos();
+
             try
             {
-                conexion.ConnectionString = "server =.\\SQLEXPRESS; database= CATALOGO_P3_DB; integrated security = true;";
-                comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select Id, Descripcion From Categorias";
-                comando.Connection = conexion;
+                datos.setearConsulta("Select Id, Descripcion From Categorias");
+                datos.ejecutarLectura();
 
-                conexion.Open();
-                lector = comando.ExecuteReader();
-                
-                while(lector.Read())
+                while (datos.Lector.Read())
                 {
                     Categoria catAuxiliar = new Categoria();
-                    catAuxiliar.IdCategoria = (int)lector["Id"];
-                    catAuxiliar.Descripcion = (string)lector["Descripcion"];
+                    catAuxiliar.IdCategoria = (int)datos.Lector["Id"];
+                    catAuxiliar.Descripcion = (string)datos.Lector["Descripcion"];
 
                     listaCategorias.Add(catAuxiliar);
 
                 }
-                conexion.Close(); 
+
                 return listaCategorias;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
+
                 throw ex;
             }
+
         }
 
+        public void Agregar(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            datos.setearConsulta("insert into Categorias (Descripcion) values ('" + categoria.Descripcion +"')");
+            datos.ejecutarAccion();
+        }
     }
 }
