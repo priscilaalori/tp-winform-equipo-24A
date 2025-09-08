@@ -23,11 +23,13 @@ namespace Negocio
             {
 
 
-                datos.setearConsulta("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion,  " +
-                                      "m.Id AS IdMarca, m.Descripcion AS Marca," +
-                                      " c.Id AS IdCategoria, c.Descripcion AS Categoria," +
-                                      " a.Precio " +
-                                      "FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id");
+                //datos.setearConsulta("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion,  " +
+                //                     "m.Id AS IdMarca, m.Descripcion AS Marca," +
+                //                     " c.Id AS IdCategoria, c.Descripcion AS Categoria," +
+                //                     " a.Precio " +
+                //                     "FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id");
+
+                datos.setearConsulta("select * from Articulos a INNER JOIN IMAGENES I on a.Id=i.IdArticulo");
 
                 datos.ejecutarLectura();
 
@@ -41,11 +43,12 @@ namespace Negocio
                     articulo.CodArticulo = datos.Lector["Codigo"].ToString();
                     articulo.NombreArticulo = datos.Lector["Nombre"].ToString();
                     articulo.Descripcion = datos.Lector["Descripcion"].ToString();
+                    articulo.Imagen = datos.Lector["ImagenUrl"].ToString();
                     articulo.Marca.IdMarca = (int)datos.Lector["IdMarca"];
-                    articulo.Marca.Descripcion = datos.Lector["Marca"].ToString();
+                   // articulo.Marca.Descripcion = datos.Lector["Marca"].ToString();
                     
                     articulo.Categoria.IdCategoria = (int)datos.Lector["IdCategoria"];
-                    articulo.Categoria.Descripcion = datos.Lector["Categoria"].ToString();
+                   // articulo.Categoria.Descripcion = datos.Lector["Categoria"].ToString();
                     articulo.Precio = Convert.ToDecimal(datos.Lector["Precio"]);
 
                     lista.Add(articulo);
@@ -71,7 +74,13 @@ namespace Negocio
 
             try 
             {
-                datos.setearConsulta("insert into Articulos (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values ('" + nuevo.CodArticulo + "', '"+nuevo.NombreArticulo+"', '"+nuevo.Descripcion+"', "+nuevo.Marca.IdMarca+ ", "+nuevo.Categoria.IdCategoria+", "+nuevo.Precio+")");
+                datos.setearConsulta("insert into Articulos (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)");
+                datos.setearParametro("@Codigo", nuevo.CodArticulo);
+                datos.setearParametro("@Nombre", nuevo.NombreArticulo);
+                datos.setearParametro("@Descripcion", nuevo.Descripcion);
+                datos.setearParametro("@IdMarca", nuevo.Marca.IdMarca);
+                datos.setearParametro("@IdCategoria", nuevo.Categoria.IdCategoria);
+                datos.setearParametro("@Precio", nuevo.Precio);
                 datos.ejecutarAccion();
             }
             catch (Exception ex) 

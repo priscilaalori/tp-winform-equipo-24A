@@ -17,12 +17,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmCarga ventana = new frmCarga();
-            ventana.ShowDialog();
-        }
-
         private void btnListar_Click(object sender, EventArgs e)
         {
             frmListaProductos frmListaProductos = new frmListaProductos(); 

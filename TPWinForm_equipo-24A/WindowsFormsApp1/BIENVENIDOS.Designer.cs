@@ -28,26 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnIngresar = new System.Windows.Forms.Button();
             this.btnListar = new System.Windows.Forms.Button();
             this.btnCategoria = new System.Windows.Forms.Button();
             this.btnMarca = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnIngresar
-            // 
-            this.btnIngresar.Location = new System.Drawing.Point(166, 54);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(139, 34);
-            this.btnIngresar.TabIndex = 0;
-            this.btnIngresar.Text = "Ingresar un artículo ";
-            this.btnIngresar.UseVisualStyleBackColor = true;
-            this.btnIngresar.Click += new System.EventHandler(this.button1_Click);
-            // 
             // btnListar
             // 
-            this.btnListar.Location = new System.Drawing.Point(166, 103);
+            this.btnListar.Location = new System.Drawing.Point(164, 83);
             this.btnListar.Margin = new System.Windows.Forms.Padding(2);
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(139, 33);
@@ -58,7 +46,7 @@
             // 
             // btnCategoria
             // 
-            this.btnCategoria.Location = new System.Drawing.Point(166, 152);
+            this.btnCategoria.Location = new System.Drawing.Point(164, 132);
             this.btnCategoria.Margin = new System.Windows.Forms.Padding(2);
             this.btnCategoria.Name = "btnCategoria";
             this.btnCategoria.Size = new System.Drawing.Size(139, 36);
@@ -69,7 +57,7 @@
             // 
             // btnMarca
             // 
-            this.btnMarca.Location = new System.Drawing.Point(166, 205);
+            this.btnMarca.Location = new System.Drawing.Point(164, 185);
             this.btnMarca.Name = "btnMarca";
             this.btnMarca.Size = new System.Drawing.Size(139, 36);
             this.btnMarca.TabIndex = 5;
@@ -85,7 +73,6 @@
             this.Controls.Add(this.btnMarca);
             this.Controls.Add(this.btnCategoria);
             this.Controls.Add(this.btnListar);
-            this.Controls.Add(this.btnIngresar);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FmrInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -96,8 +83,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnListar;
         private System.Windows.Forms.Button btnCategoria;
         private System.Windows.Forms.Button btnMarca;
