@@ -35,10 +35,10 @@
             // 
             // btnListar
             // 
-            this.btnListar.Location = new System.Drawing.Point(164, 83);
-            this.btnListar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnListar.Location = new System.Drawing.Point(328, 160);
+            this.btnListar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(139, 33);
+            this.btnListar.Size = new System.Drawing.Size(278, 63);
             this.btnListar.TabIndex = 4;
             this.btnListar.Text = "Listar artículos";
             this.btnListar.UseVisualStyleBackColor = true;
@@ -46,10 +46,10 @@
             // 
             // btnCategoria
             // 
-            this.btnCategoria.Location = new System.Drawing.Point(164, 132);
-            this.btnCategoria.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCategoria.Location = new System.Drawing.Point(328, 254);
+            this.btnCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCategoria.Name = "btnCategoria";
-            this.btnCategoria.Size = new System.Drawing.Size(139, 36);
+            this.btnCategoria.Size = new System.Drawing.Size(278, 69);
             this.btnCategoria.TabIndex = 5;
             this.btnCategoria.Text = "Listar Categorías";
             this.btnCategoria.UseVisualStyleBackColor = true;
@@ -57,9 +57,10 @@
             // 
             // btnMarca
             // 
-            this.btnMarca.Location = new System.Drawing.Point(164, 185);
+            this.btnMarca.Location = new System.Drawing.Point(328, 356);
+            this.btnMarca.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnMarca.Name = "btnMarca";
-            this.btnMarca.Size = new System.Drawing.Size(139, 36);
+            this.btnMarca.Size = new System.Drawing.Size(278, 69);
             this.btnMarca.TabIndex = 5;
             this.btnMarca.Text = "Administrar Marcas";
             this.btnMarca.UseVisualStyleBackColor = true;
@@ -67,16 +68,16 @@
             // 
             // FmrInicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 374);
+            this.ClientSize = new System.Drawing.Size(966, 719);
             this.Controls.Add(this.btnMarca);
             this.Controls.Add(this.btnCategoria);
             this.Controls.Add(this.btnListar);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FmrInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Bienvenidx";
+            this.Text = "Ventana de bienvenida";
             this.Load += new System.EventHandler(this.FmrInicio_Load);
             this.ResumeLayout(false);
 

@@ -14,11 +14,18 @@ namespace WindowsFormsApp1
 {
     public partial class frmAltaCategoria : Form
     {
+        private Categoria categoria = null;
         public frmAltaCategoria()
         {
             InitializeComponent();
         }
 
+        public frmAltaCategoria(Categoria categoriaSeleccionada)
+        {
+            InitializeComponent();
+            this.categoria = categoriaSeleccionada;
+            Text = "Modificar categoría";
+        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
@@ -26,14 +33,35 @@ namespace WindowsFormsApp1
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Categoria nuevaCategoria = new Categoria(); 
-            CategoriaNegocio catNegocio = new CategoriaNegocio();
+            if (categoria == null)
+            {
+                categoria = new Categoria();
+                CategoriaNegocio catNegocio = new CategoriaNegocio();
+                categoria.Descripcion = txtDescripcion.Text;
+                catNegocio.Agregar(categoria);
+                MessageBox.Show("Agregado exitosamente");
+                Close();
+            }
+            
+            else if (categoria != null)
+            {
+       
+                CategoriaNegocio catNegocio = new CategoriaNegocio();
+                categoria.Descripcion = txtDescripcion.Text;
+                catNegocio.Modificar(categoria);
 
-            nuevaCategoria.Descripcion = txtDescripcion.Text;
-            catNegocio.Agregar(nuevaCategoria);
+                MessageBox.Show("Modificado exitosamente");
+                Close();
+            }
+        }
 
-            MessageBox.Show("Agregado exitosamente");
-            Close();
+        private void frmAltaCategoria_Load(object sender, EventArgs e)
+        {
+       
+            if(categoria != null)
+                txtDescripcion.Text = categoria.Descripcion;
+                
+        
         }
     }
 }

@@ -47,8 +47,22 @@ namespace Negocio
         {
             AccesoDatos datos = new AccesoDatos();
 
-            datos.setearConsulta("insert into Categorias (Descripcion) values ('" + categoria.Descripcion +"')");
+            datos.setearConsulta("insert into Categorias (Descripcion) values (@desc)");
+            datos.setearParametro("@desc", categoria.Descripcion);
             datos.ejecutarAccion();
         }
+
+
+        public void Modificar(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            datos.setearConsulta("update Categorias set Descripcion = @desc where ID = @id");
+            datos.setearParametro("@desc", categoria.Descripcion);
+            datos.setearParametro("@id", categoria.IdCategoria);
+            datos.ejecutarAccion();
+
+        }
+
     }
 }

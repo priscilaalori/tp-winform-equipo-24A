@@ -13,7 +13,7 @@ namespace Negocio
         private SqlCommand comando;
         private SqlDataReader lector;
 
-
+        //guarda el conjunto de datos leido de la base de datos, es como una tabla virtual
         public SqlDataReader Lector
         {
             get { return lector; }
@@ -26,12 +26,14 @@ namespace Negocio
 
         }
 
+        //Recibe la consulta SQL
         public void setearConsulta ( string consulta)
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
         }
 
+        //Lee la bdd. Solo sirve para select
         public void ejecutarLectura()
         {
             comando.Connection = conexion;
@@ -46,6 +48,8 @@ namespace Negocio
                 throw ex;
             }
         }
+
+        //Ejecuta las consultas: delete, update, insert
         public void ejecutarAccion()
         {
             comando.Connection = conexion;
@@ -61,7 +65,8 @@ namespace Negocio
                 throw ex;
             }
         }
-
+    
+        //Darle variables a la consulta sql 
         public void setearParametro(string nombre, object valor) 
         {
             comando.Parameters.AddWithValue(nombre, valor);
