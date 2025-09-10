@@ -1,11 +1,6 @@
 ﻿using Dominio;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio
 {
@@ -31,7 +26,6 @@ namespace Negocio
 
                     listaMarcas.Add(marcaAuxiliar);
                 }
-
                
                 return listaMarcas;
             }
@@ -49,7 +43,6 @@ namespace Negocio
         {
             AccesoDatos datos = new AccesoDatos();
 
-
             try
             {
                 datos.setearConsulta("INSERT INTO MARCAS (Descripcion) VALUES ('" + nuevaMarca.Descripcion + "')");
@@ -57,13 +50,49 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
             {
                 datos.cerrarConexion(); 
             }
+        }
+
+        public void modificar(Marca marca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE MARCAS SET DESCRIPCION = '" + marca.Descripcion + "' WHERE ID = " + marca.IdMarca);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void eliminar(int id )
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("DELETE FROM MARCAS WHERE ID = " + id);
+                datos.ejecutarAccion(); 
+            }
+            catch (Exception ex)
+            {
+                throw ex ;
+            }
+            finally
+            {
+                datos.cerrarConexion(); 
+            }
+
         }
     }
 }

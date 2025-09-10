@@ -35,5 +35,10 @@ namespace WindowsFormsApp1
             MessageBox.Show("Agregado exitosamente");
             Close();
         }
+
+        private void frmListaMarca_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

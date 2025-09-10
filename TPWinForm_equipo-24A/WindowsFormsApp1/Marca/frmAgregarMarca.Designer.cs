@@ -82,6 +82,7 @@
             this.Controls.Add(this.textMarca);
             this.Name = "frmAgregarMarca";
             this.Text = "Agregar Marca";
+            this.Load += new System.EventHandler(this.frmAgregarMarca_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,22 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Dominio;
+﻿using Dominio;
 using Negocio;
+using System;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public partial class frmAgregarMarca : Form
     {
+
+        private Marca marca = null;
         public frmAgregarMarca()
         {
             InitializeComponent();
+        }
+
+        public frmAgregarMarca(Marca marcaNueva)
+
+        {
+            InitializeComponent();
+            Text = "Modificar Marca";
+            this.marca = marcaNueva;
         }
 
         private void labelAgregarMarca_Click(object sender, EventArgs e)
@@ -30,22 +33,43 @@ namespace WindowsFormsApp1
         }
 
         private void btnGuardarMarca_Click(object sender, EventArgs e)
-        {   
-            Marca nuevaMarca = new Marca(); 
+        {
+            // Marca nuevaMarca = new Marca(); 
             MarcaNegocio negocio = new MarcaNegocio();
 
             try
             {
-                nuevaMarca.Descripcion = textMarca.Text;
-                negocio.agregar(nuevaMarca);
-                MessageBox.Show("Marca Agregada");
-                Close();
+                if (marca == null)
+                {
+                    marca = new Marca();
+                }
+                marca.Descripcion = textMarca.Text;
 
+                if (marca.IdMarca != 0)
+                {
+                    negocio.modificar(marca);
+                    MessageBox.Show("Modificado exitosamente");
+                }
+                else
+                {
+                    negocio.agregar(marca);
+                    MessageBox.Show("Marca Agregada");
+                }
+
+                Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 throw;
+            }
+        }
+
+        private void frmAgregarMarca_Load(object sender, EventArgs e)
+        {
+            if (marca != null)
+            {
+                textMarca.Text = marca.Descripcion;
             }
         }
     }
