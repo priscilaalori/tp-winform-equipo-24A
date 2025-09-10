@@ -61,9 +61,15 @@ namespace WindowsFormsApp1
             Categoria catSeleccionada = new Categoria();
             try
             {
-                catSeleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
-                catNegocio.Eliminar(catSeleccionada.IdCategoria);
-                cargar();
+                DialogResult respuesta= MessageBox.Show("¿Realmente desea eliminarlo?", "Eliminando",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                
+                if(respuesta == DialogResult.Yes)
+                {
+                    catSeleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+                    catNegocio.Eliminar(catSeleccionada.IdCategoria);
+                    cargar();
+                }
+               
             }
             catch (Exception ex)
             {
