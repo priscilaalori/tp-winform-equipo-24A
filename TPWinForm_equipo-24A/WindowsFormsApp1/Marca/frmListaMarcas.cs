@@ -1,12 +1,15 @@
 ﻿using Dominio;
 using Negocio;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public partial class frmListaMarcas : Form
-    { 
+    {
+        List<Marca> listaMarcas = new List<Marca>();
+
         public frmListaMarcas()
         {
             InitializeComponent();
@@ -25,7 +28,8 @@ namespace WindowsFormsApp1
         private void cargar()
         {
             MarcaNegocio negocio = new MarcaNegocio();
-            dgvMarcas.DataSource = negocio.Listar();
+            listaMarcas = negocio.Listar();
+            dgvMarcas.DataSource = listaMarcas;
         }
 
         private void btnAgregarMarca_Click(object sender, EventArgs e)
@@ -66,6 +70,25 @@ namespace WindowsFormsApp1
                 throw;
             }
             
+        }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            List<Marca> listaFiltrada;
+            string filtro = textFiltro.Text;
+
+            if (filtro != "")
+            {
+
+            listaFiltrada = listaMarcas.FindAll(m => m.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+
+            } else
+            {
+                listaFiltrada = listaMarcas; 
+            }
+
+            dgvMarcas.DataSource = null;
+            dgvMarcas.DataSource = listaFiltrada; 
         }
     }
 }
