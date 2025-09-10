@@ -54,5 +54,24 @@ namespace WindowsFormsApp1
             cargar();
 
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            CategoriaNegocio catNegocio = new CategoriaNegocio();
+            Categoria catSeleccionada = new Categoria();
+            try
+            {
+                catSeleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+                catNegocio.Eliminar(catSeleccionada.IdCategoria);
+                cargar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                
+                
+          
+            }
+        }
     }
 }

@@ -47,22 +47,56 @@ namespace Negocio
         {
             AccesoDatos datos = new AccesoDatos();
 
-            datos.setearConsulta("insert into Categorias (Descripcion) values (@desc)");
-            datos.setearParametro("@desc", categoria.Descripcion);
-            datos.ejecutarAccion();
+            try
+            {
+                datos.setearConsulta("insert into Categorias (Descripcion) values (@desc)");
+                datos.setearParametro("@desc", categoria.Descripcion);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
+           
         }
 
 
         public void Modificar(Categoria categoria)
         {
             AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update Categorias set Descripcion = @desc where ID = @id");
+                datos.setearParametro("@desc", categoria.Descripcion);
+                datos.setearParametro("@id", categoria.IdCategoria);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
 
-            datos.setearConsulta("update Categorias set Descripcion = @desc where ID = @id");
-            datos.setearParametro("@desc", categoria.Descripcion);
-            datos.setearParametro("@id", categoria.IdCategoria);
-            datos.ejecutarAccion();
+                throw ex;
+            }
 
         }
 
+        public void Eliminar (int idCategoria)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                
+                accesoDatos.setearConsulta("Delete from Categorias where Id = @id");
+                accesoDatos.setearParametro("@id", idCategoria);
+                accesoDatos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
