@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class fmrListaCategorias : Form
     {
+        private List<Categoria> listaCategorias;
         public fmrListaCategorias()
         {
             InitializeComponent();
@@ -33,7 +34,8 @@ namespace WindowsFormsApp1
         private void cargar()
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
-            dgvCategoria.DataSource = negocio.Listar();
+            listaCategorias = negocio.Listar();
+            dgvCategoria.DataSource = listaCategorias;
         }
 
         private void btnAgregarCat_Click(object sender, EventArgs e)
@@ -74,10 +76,20 @@ namespace WindowsFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                
-                
-          
+      
             }
+        }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            List<Categoria> listaCategoriaFiltrada;
+            
+            listaCategoriaFiltrada = listaCategorias.FindAll(x => x.Descripcion == txtFiltro.Text);
+
+            dgvCategoria.DataSource = null;
+            dgvCategoria.DataSource = listaCategoriaFiltrada;
+
+
         }
     }
 }
