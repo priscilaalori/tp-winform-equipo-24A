@@ -86,7 +86,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmListaMarca";
             this.Text = "frmAltaCategoria";
-            this.Load += new System.EventHandler(this.frmListaMarca_Load);
+            this.Load += new System.EventHandler(this.frmAltaCategoria_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 using Negocio;
 namespace WindowsFormsApp1
 {
@@ -16,11 +17,12 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-
         private void fmrListaCategorias_Load(object sender, EventArgs e)
         {
-            CategoriaNegocio negocio = new CategoriaNegocio();
-            dgvCategoria.DataSource = negocio.Listar();
+            //CategoriaNegocio negocio = new CategoriaNegocio();
+            //dgvCategoria.DataSource = negocio.Listar();
+            cargar();
+
         }
 
         private void dgvCategoria_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -28,10 +30,54 @@ namespace WindowsFormsApp1
 
         }
 
+        private void cargar()
+        {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            dgvCategoria.DataSource = negocio.Listar();
+        }
+
         private void btnAgregarCat_Click(object sender, EventArgs e)
         {
             frmAltaCategoria frmAlta = new frmAltaCategoria();
             frmAlta.ShowDialog();
+            cargar();
+
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Categoria seleccionado;
+
+            seleccionado = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+            frmAltaCategoria frmModificar = new frmAltaCategoria(seleccionado);
+            frmModificar.ShowDialog();
+            cargar();
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            CategoriaNegocio catNegocio = new CategoriaNegocio();
+            Categoria catSeleccionada = new Categoria();
+            try
+            {
+                DialogResult respuesta= MessageBox.Show("¿Realmente desea eliminarlo?", "Eliminando",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                
+                if(respuesta == DialogResult.Yes)
+                {
+                    catSeleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+                    catNegocio.Eliminar(catSeleccionada.IdCategoria);
+                    cargar();
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                
+                
+          
+            }
         }
     }
 }

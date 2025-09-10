@@ -30,23 +30,28 @@
         {
             this.dgvCategoria = new System.Windows.Forms.DataGridView();
             this.btnAgregarCat = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvCategoria
             // 
             this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategoria.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvCategoria.Location = new System.Drawing.Point(28, 33);
-            this.dgvCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvCategoria.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvCategoria.MultiSelect = false;
             this.dgvCategoria.Name = "dgvCategoria";
             this.dgvCategoria.RowHeadersWidth = 82;
-            this.dgvCategoria.Size = new System.Drawing.Size(504, 531);
+            this.dgvCategoria.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCategoria.Size = new System.Drawing.Size(552, 531);
             this.dgvCategoria.TabIndex = 0;
             this.dgvCategoria.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoria_CellContentClick);
             // 
             // btnAgregarCat
             // 
-            this.btnAgregarCat.Location = new System.Drawing.Point(606, 55);
+            this.btnAgregarCat.Location = new System.Drawing.Point(685, 33);
             this.btnAgregarCat.Name = "btnAgregarCat";
             this.btnAgregarCat.Size = new System.Drawing.Size(179, 52);
             this.btnAgregarCat.TabIndex = 1;
@@ -54,14 +59,36 @@
             this.btnAgregarCat.UseVisualStyleBackColor = true;
             this.btnAgregarCat.Click += new System.EventHandler(this.btnAgregarCat_Click);
             // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(682, 122);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(181, 60);
+            this.btnModificar.TabIndex = 2;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(682, 203);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(178, 60);
+            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // fmrListaCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 606);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregarCat);
             this.Controls.Add(this.dgvCategoria);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fmrListaCategorias";
             this.Text = "fmrListaCategorias";
             this.Load += new System.EventHandler(this.fmrListaCategorias_Load);
@@ -74,5 +101,7 @@
 
         private System.Windows.Forms.DataGridView dgvCategoria;
         private System.Windows.Forms.Button btnAgregarCat;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }
