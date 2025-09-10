@@ -13,21 +13,11 @@ namespace Negocio
         public List<Articulo> listarArticulos()
         { 
             List<Articulo> lista = new List<Articulo>();
-            //SqlConnection conexion = new SqlConnection();
-            //SqlCommand comando = new SqlCommand();
-            //SqlDataReader lector;
 
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-
-
-                //datos.setearConsulta("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion,  " +
-                //                     "m.Id AS IdMarca, m.Descripcion AS Marca," +
-                //                     " c.Id AS IdCategoria, c.Descripcion AS Categoria," +
-                //                     " a.Precio " +
-                //                     "FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id");
 
                 datos.setearConsulta("select * from Articulos a INNER JOIN IMAGENES I on a.Id=i.IdArticulo");
 
@@ -82,6 +72,12 @@ namespace Negocio
                 datos.setearParametro("@IdCategoria", nuevo.Categoria.IdCategoria);
                 datos.setearParametro("@Precio", nuevo.Precio);
                 datos.ejecutarAccion();
+                datos.cerrarConexion();
+
+                datos.setearConsulta("INSERT INTO Imagenes (IdArticulo, ImagenUrl) " +
+                     "VALUES ((SELECT MAX(Id) FROM Articulos), @UrlImagen)");
+                datos.setearParametro("@UrlImagen", nuevo.Imagen);
+                datos.ejecutarAccion();
             }
             catch (Exception ex) 
             { 
@@ -92,5 +88,49 @@ namespace Negocio
                 datos.cerrarConexion();
             }
     }
-}
+
+        public void modificar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria , Precio = @Precio where Id = @Id;");
+                datos.setearParametro("@Codigo", articulo.CodArticulo);
+                datos.setearParametro("@Nombre", articulo.NombreArticulo);
+                datos.setearParametro("@Descripcion", articulo.Descripcion);
+                datos.setearParametro("@IdMarca", articulo.Marca.IdMarca);
+                datos.setearParametro("@IdCategoria", articulo.Categoria.IdCategoria);
+                datos.setearParametro("@Precio", articulo.Precio);
+                datos.setearParametro("@Id", articulo.Id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally 
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void eliminar (int id )
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearConsulta("Delete from Articulos where Id=@Id");
+                datos.setearParametro("@Id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+    }
 }
