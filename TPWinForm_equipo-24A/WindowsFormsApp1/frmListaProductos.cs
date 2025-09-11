@@ -24,6 +24,9 @@ namespace WindowsFormsApp1
         {
 
             cargar();
+            cboCampo.Items.Add("Codigo");
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Descripcion");
 
         }
 
@@ -143,50 +146,25 @@ namespace WindowsFormsApp1
 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
-            List<Articulo> articulosFiltrados;
-            string filtro = txtFiltro.Text;
 
-            if (filtro != "")
-                articulosFiltrados = articulos.FindAll(x => x.NombreArticulo.ToUpper().Contains(filtro.ToUpper()) ||
-                x.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.CodArticulo.ToUpper().Contains(filtro.ToUpper()) ||
-                x.Precio.ToString().Contains(filtro) || x.IdMarca.ToString().Contains(filtro)
-                || x.IdCategoria.ToString().Contains(filtro) );
-            else
-                articulosFiltrados = articulos;
+            ArticuloNegocio articulo = new ArticuloNegocio();
 
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+                dgvArt.DataSource = articulo.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
 
-
-            dgvArt.DataSource = null;
-            dgvArt.DataSource = articulosFiltrados;
-            ocultarColumnas();
-
-            if (articulosFiltrados.Count > 0)
-                dgvArt.Rows[0].Selected = true;
+                MessageBox.Show(ex.ToString());
+            }
+      
         }
 
-        private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            List<Articulo> articulosFiltrados;
-            string filtro = txtFiltro.Text;
 
-            if (filtro != "")
-                articulosFiltrados = articulos.FindAll(x => x.NombreArticulo.ToUpper().Contains(filtro.ToUpper()) ||
-                x.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.CodArticulo.ToUpper().Contains(filtro.ToUpper()) ||
-                x.Precio.ToString().Contains(filtro) || x.IdMarca.ToString().Contains(filtro)
-                || x.IdCategoria.ToString().Contains(filtro));
-            else
-                articulosFiltrados = articulos;
-
-
-
-            dgvArt.DataSource = null;
-            dgvArt.DataSource = articulosFiltrados;
-            ocultarColumnas();
-
-            if (articulosFiltrados.Count > 0)
-                dgvArt.Rows[0].Selected = true;
-
-        }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
@@ -209,6 +187,19 @@ namespace WindowsFormsApp1
 
             if (articulosFiltrados.Count > 0)
                 dgvArt.Rows[0].Selected = true;
+
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            if(opcion == "Codigo" || opcion == "Nombre" || opcion == "Descripcion"  ) 
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
 
         }
     }

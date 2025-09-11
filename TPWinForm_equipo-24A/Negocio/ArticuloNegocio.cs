@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,8 +20,14 @@ namespace Negocio
             try
             {
 
-                datos.setearConsulta("select * from Articulos a INNER JOIN IMAGENES I on a.Id=i.IdArticulo");
-
+                //datos.setearConsulta("select * from Articulos a INNER JOIN IMAGENES I on a.Id=i.IdArticulo");
+                datos.setearConsulta("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion,  " +
+                                      "m.Id AS IdMarca, m.Descripcion AS Marca," +
+                                      "c.Id AS IdCategoria, c.Descripcion AS Categoria," +
+                                      "a.Precio," +
+                                      "I.Imagenurl " +
+                                      "FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id " +
+                                      "INNER JOIN IMAGENES I on a.Id = I.IdArticulo");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read()) 
@@ -33,13 +40,12 @@ namespace Negocio
                     articulo.CodArticulo = datos.Lector["Codigo"].ToString();
                     articulo.NombreArticulo = datos.Lector["Nombre"].ToString();
                     articulo.Descripcion = datos.Lector["Descripcion"].ToString();
-                    articulo.Imagen = datos.Lector["ImagenUrl"].ToString();
                     articulo.Marca.IdMarca = (int)datos.Lector["IdMarca"];
-                   // articulo.Marca.Descripcion = datos.Lector["Marca"].ToString();
-                    
+                    articulo.Marca.Descripcion = datos.Lector["Marca"].ToString();
                     articulo.Categoria.IdCategoria = (int)datos.Lector["IdCategoria"];
-                   // articulo.Categoria.Descripcion = datos.Lector["Categoria"].ToString();
+                    articulo.Categoria.Descripcion = datos.Lector["Categoria"].ToString();
                     articulo.Precio = Convert.ToDecimal(datos.Lector["Precio"]);
+                    articulo.Imagen = datos.Lector["ImagenUrl"].ToString();
 
                     lista.Add(articulo);
 
@@ -64,6 +70,9 @@ namespace Negocio
 
             try 
             {
+                //Aca hago dos query, uno para insertar el articulo
+                //En otro obtengo el MAX ID, osea teoricamente deberia ser el que recien agregué, y con ese ID inserto la imagen
+                //Habria que ver si hay otra forma, por el momento lo pense asi
                 datos.setearConsulta("insert into Articulos (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)");
                 datos.setearParametro("@Codigo", nuevo.CodArticulo);
                 datos.setearParametro("@Nombre", nuevo.NombreArticulo);
@@ -132,5 +141,100 @@ namespace Negocio
             }
         }
 
+        public List<Articulo> filtrar(string campo, string criterio, string filtro)
+        {
+            List <Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion,  " +
+                                      "m.Id AS IdMarca, m.Descripcion AS Marca," +
+                                      "c.Id AS IdCategoria, c.Descripcion AS Categoria," +
+                                      "a.Precio," +
+                                      "I.Imagenurl " +
+                                      "FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id " +
+                                      "INNER JOIN IMAGENES I on a.Id = I.IdArticulo and ";
+
+                if (campo == "Codigo")
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "a.Codigo like '" + filtro + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "a.Codigo like '%" + filtro + "'";
+                            break;
+                        default:
+                            consulta += "a.Codigo like '%" + filtro + "%'";
+                            break;
+                    }
+                }
+                else if (campo == "Nombre")
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "a.Nombre like '" + filtro + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "a.Nombre like '%" + filtro + "'";
+                            break;
+                        default:
+                            consulta += "a.Nombre like '%" + filtro + "%'";
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "a.Descripcion like '" + filtro + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "a.Descripcion like '%" + filtro + "'";
+                            break;
+                        default:
+                            consulta += "a.Descripcion like '%" + filtro + "%'";
+                            break;
+                    }
+                }
+
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo articulo = new Articulo();
+                    articulo.Marca = new Marca();
+                    articulo.Categoria = new Categoria();
+
+                    articulo.Id = datos.Lector.GetInt32(0);
+                    articulo.CodArticulo = datos.Lector["Codigo"].ToString();
+                    articulo.NombreArticulo = datos.Lector["Nombre"].ToString();
+                    articulo.Descripcion = datos.Lector["Descripcion"].ToString();
+                    articulo.Marca.IdMarca = (int)datos.Lector["IdMarca"];
+                    articulo.Marca.Descripcion = datos.Lector["Marca"].ToString();
+                    articulo.Categoria.IdCategoria = (int)datos.Lector["IdCategoria"];
+                    articulo.Categoria.Descripcion = datos.Lector["Categoria"].ToString();
+                    articulo.Precio = Convert.ToDecimal(datos.Lector["Precio"]);
+                    articulo.Imagen = datos.Lector["ImagenUrl"].ToString();
+
+                    lista.Add(articulo);
+
+                }
+
+                
+
+                return lista;
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
