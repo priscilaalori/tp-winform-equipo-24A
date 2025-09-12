@@ -144,6 +144,16 @@ namespace WindowsFormsApp1
             }
         }
 
+        private bool validarFiltro()
+        {
+            if(cboCampo.SelectedIndex < 0 || cboCriterio.SelectedIndex < 0) {
+
+                MessageBox.Show("Por favor, seleccione el campo requerido");
+                return true;
+            }
+            else { return false; }
+
+        }
         private void btnFiltro_Click(object sender, EventArgs e)
         {
 
@@ -151,6 +161,9 @@ namespace WindowsFormsApp1
 
             try
             {
+                if (validarFiltro())
+                    return;
+
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
@@ -163,8 +176,6 @@ namespace WindowsFormsApp1
             }
       
         }
-
-
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {

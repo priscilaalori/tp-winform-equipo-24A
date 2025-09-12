@@ -31,6 +31,7 @@ namespace WindowsFormsApp1
 
         }
 
+
         private void cargar()
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
@@ -38,11 +39,21 @@ namespace WindowsFormsApp1
             dgvCategoria.DataSource = listaCategorias;
         }
 
+       
         private void btnAgregarCat_Click(object sender, EventArgs e)
         {
-            frmAltaCategoria frmAlta = new frmAltaCategoria();
-            frmAlta.ShowDialog();
-            cargar();
+
+            try
+            {
+                frmAltaCategoria frmAlta = new frmAltaCategoria();
+                frmAlta.ShowDialog();
+                cargar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
 
         }
 
@@ -78,11 +89,6 @@ namespace WindowsFormsApp1
                 MessageBox.Show(ex.ToString());
       
             }
-        }
-
-        private void btnFiltro_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)

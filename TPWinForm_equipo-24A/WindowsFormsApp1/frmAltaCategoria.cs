@@ -31,6 +31,14 @@ namespace WindowsFormsApp1
             Close();
         }
 
+        private bool validarRequerido(string texto)
+        {
+            if(texto == "")
+            {
+                return false;
+            }
+            return true;
+        }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (categoria == null)
@@ -38,9 +46,17 @@ namespace WindowsFormsApp1
                 categoria = new Categoria();
                 CategoriaNegocio catNegocio = new CategoriaNegocio();
                 categoria.Descripcion = txtDescripcion.Text;
-                catNegocio.Agregar(categoria);
-                MessageBox.Show("Agregado exitosamente");
-                Close();
+
+                if(validarRequerido(categoria.Descripcion)== true)
+                {
+                    catNegocio.Agregar(categoria);
+                    MessageBox.Show("Agregado exitosamente");
+                    Close();
+                }
+                else { MessageBox.Show("Ingrese descripción");
+                    return;
+                }
+               
             }
             
             else if (categoria != null)
@@ -48,10 +64,17 @@ namespace WindowsFormsApp1
        
                 CategoriaNegocio catNegocio = new CategoriaNegocio();
                 categoria.Descripcion = txtDescripcion.Text;
-                catNegocio.Modificar(categoria);
-
-                MessageBox.Show("Modificado exitosamente");
-                Close();
+                
+                if(validarRequerido(categoria.Descripcion) == true)
+                {
+                    catNegocio.Modificar(categoria);
+                    MessageBox.Show("Modificado exitosamente");
+                    Close();
+                }
+                else {
+                    MessageBox.Show("Ingrese una nueva descripción");
+                        return; }
+             
             }
         }
 
