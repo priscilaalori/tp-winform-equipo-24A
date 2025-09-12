@@ -42,7 +42,7 @@
             // 
             this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategoria.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvCategoria.Location = new System.Drawing.Point(28, 33);
+            this.dgvCategoria.Location = new System.Drawing.Point(28, 81);
             this.dgvCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCategoria.MultiSelect = false;
             this.dgvCategoria.Name = "dgvCategoria";
@@ -85,22 +85,23 @@
             // lblFiltro
             // 
             this.lblFiltro.AutoSize = true;
-            this.lblFiltro.Location = new System.Drawing.Point(677, 413);
+            this.lblFiltro.Location = new System.Drawing.Point(32, 33);
             this.lblFiltro.Name = "lblFiltro";
-            this.lblFiltro.Size = new System.Drawing.Size(60, 25);
+            this.lblFiltro.Size = new System.Drawing.Size(126, 25);
             this.lblFiltro.TabIndex = 4;
-            this.lblFiltro.Text = "Filtro";
+            this.lblFiltro.Text = "Filtro rápido";
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(756, 410);
+            this.txtFiltro.Location = new System.Drawing.Point(185, 27);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(100, 31);
             this.txtFiltro.TabIndex = 5;
+            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
             // 
             // btnFiltro
             // 
-            this.btnFiltro.Location = new System.Drawing.Point(682, 473);
+            this.btnFiltro.Location = new System.Drawing.Point(685, 417);
             this.btnFiltro.Name = "btnFiltro";
             this.btnFiltro.Size = new System.Drawing.Size(174, 55);
             this.btnFiltro.TabIndex = 6;

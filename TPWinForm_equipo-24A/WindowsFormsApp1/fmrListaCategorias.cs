@@ -82,14 +82,27 @@ namespace WindowsFormsApp1
 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
-            List<Categoria> listaCategoriaFiltrada;
             
-            listaCategoriaFiltrada = listaCategorias.FindAll(x => x.Descripcion == txtFiltro.Text);
 
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Categoria> listaCategoriaFiltrada;
+            string filtro = txtFiltro.Text;
+
+            if (filtro.Length >= 3)
+            {
+
+                listaCategoriaFiltrada = listaCategorias.FindAll(x => x.Descripcion.ToUpper().Contains(txtFiltro.Text.ToUpper()));
+
+            }
+            else
+            {
+                listaCategoriaFiltrada = listaCategorias;
+            }
             dgvCategoria.DataSource = null;
             dgvCategoria.DataSource = listaCategoriaFiltrada;
-
-
         }
     }
 }
