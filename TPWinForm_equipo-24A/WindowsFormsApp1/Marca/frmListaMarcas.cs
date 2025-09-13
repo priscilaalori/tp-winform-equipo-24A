@@ -43,16 +43,17 @@ namespace WindowsFormsApp1
         private void btnModificarMarca_Click(object sender, EventArgs e)
         {
             Marca seleccionado;
-
-            if (dgvMarcas.SelectedRows.Count > 0)
-            {
+            
+           // if (dgvMarcas.SelectedRows.Count > 0)
+           // {
                 seleccionado = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
 
                 frmAgregarMarca frmModificar = new frmAgregarMarca(seleccionado);
                 frmModificar.ShowDialog();
                 cargar();
-            }
-            else { MessageBox.Show("Debe seleccionar un elemento para modificar"); }
+            //}
+           // else { MessageBox.Show("Debe seleccionar un elemento para modificar"); }
+           // en que ocasion apareceria este cartel?
         }
 
         private void btnEliminarMarca_Click(object sender, EventArgs e)

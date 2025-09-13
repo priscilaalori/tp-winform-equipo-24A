@@ -10,7 +10,7 @@ namespace Dominio
 {
     public  class Marca
     {
-        public static object descripcion { get; set; }
+        
         public int IdMarca { get; set; }
 
         [DisplayName( "Descripción")]

@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
 
                 // Marcas
                 cboIdMarca.DataSource = elementoNegocio.Listar();
-                cboIdMarca.DisplayMember = "IdMarca";
+                cboIdMarca.DisplayMember = "Descripcion";
                 cboIdMarca.ValueMember = "IdMarca";
 
                 // Categorias
@@ -81,48 +81,51 @@ namespace WindowsFormsApp1
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-           
-            if(txtPrecio.Text == "" && txtNombre.Text == "") 
+
+            if (txtPrecio.Text == "" && txtNombre.Text == "")
             {
                 MessageBox.Show("Debe cargar datos requeridos");
             }
-            // Articulo articuloNuevo = new Articulo();
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            try
+            else
             {
-                if (articulo == null)
-                    articulo = new Articulo();
-
-
-                articulo.CodArticulo = txtCodigo.Text;
-                articulo.NombreArticulo = txtNombre.Text;
-                articulo.Descripcion = txtDes.Text;
-                articulo.Marca = (Marca)cboIdMarca.SelectedItem;
-                articulo.Categoria = (Categoria)cboIdCat.SelectedItem;
-                articulo.Precio = decimal.Parse(txtPrecio.Text);
-                articulo.Imagen = txtUrlImagen.Text;
-
-                if (articulo.Id != 0)
+                // Articulo articuloNuevo = new Articulo();
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                try
                 {
-                    negocio.modificar(articulo);
-                    MessageBox.Show("Modificado correctamente");
+                    if (articulo == null)
+                        articulo = new Articulo();
+
+
+                    articulo.CodArticulo = txtCodigo.Text;
+                    articulo.NombreArticulo = txtNombre.Text;
+                    articulo.Descripcion = txtDes.Text;
+                    articulo.Marca = (Marca)cboIdMarca.SelectedItem;
+                    articulo.Categoria = (Categoria)cboIdCat.SelectedItem;
+                    articulo.Precio = decimal.Parse(txtPrecio.Text);
+                    articulo.Imagen = txtUrlImagen.Text;
+
+                    if (articulo.Id != 0)
+                    {
+                        negocio.modificar(articulo);
+                        MessageBox.Show("Modificado correctamente");
+                    }
+                    else
+                    {
+                        negocio.agregar(articulo);
+                        MessageBox.Show("Agregado correctamente");
+                    }
+
+
+
+                    this.Close();
                 }
-                else 
+                catch (Exception ex)
                 {
-                    negocio.agregar(articulo);
-                    MessageBox.Show("Agregado correctamente");
+
+                    MessageBox.Show(ex.ToString());
                 }
 
-               
-                
-                this.Close();
             }
-            catch (Exception ex) {
-
-                MessageBox.Show(ex.ToString());
-            }
-            
-            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -148,6 +151,11 @@ namespace WindowsFormsApp1
 
                 pictureBoxArt.Load("https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg");
             }
+
+        }
+
+        private void cboIdMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -39,24 +39,28 @@ namespace WindowsFormsApp1
 
             try
             {
-                if (marca == null)
+                if (textMarca.Text.Length > 0)
                 {
-                    marca = new Marca();
-                }
-                marca.Descripcion = textMarca.Text;
+                    if (marca == null)
+                    {
+                        marca = new Marca();
+                    }
+                    marca.Descripcion = textMarca.Text;
 
-                if (marca.IdMarca != 0)
-                {
-                    negocio.modificar(marca);
-                    MessageBox.Show("Modificado exitosamente");
-                }
-                else
-                {
-                    negocio.agregar(marca);
-                    MessageBox.Show("Marca Agregada");
-                }
+                    if (marca.IdMarca != 0)
+                    {
+                        negocio.modificar(marca);
+                        MessageBox.Show("Modificado exitosamente");
+                    }
+                    else
+                    {
+                        negocio.agregar(marca);
+                        MessageBox.Show("Marca Agregada");
+                    }
 
-                Close();
+                    Close();
+                }
+                else { MessageBox.Show("No es posible agregar marca vacia"); }
             }
             catch (Exception ex)
             {
