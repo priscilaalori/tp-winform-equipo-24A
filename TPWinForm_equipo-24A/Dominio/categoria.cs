@@ -11,6 +11,8 @@ namespace Dominio
     {
         [DisplayName("Código")]
         public int IdCategoria { get; set; } 
+
+        [DisplayName("Descripción")]
         public string Descripcion { get; set; }
 
         public override string ToString()

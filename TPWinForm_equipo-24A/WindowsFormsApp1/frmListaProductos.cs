@@ -61,9 +61,9 @@ namespace WindowsFormsApp1
             // Renombro la cabecera de PrecioFormateado
             dgvArt.Columns["PrecioFormateado"].HeaderText = "Precio";
             // Oculto el Marca que queda feo
-            dgvArt.Columns["Marca"].Visible = false;
+            dgvArt.Columns["IdMarca"].Visible = false;
             dgvArt.Columns["Imagen"].Visible = false;
-            dgvArt.Columns["Categoria"].Visible = false;
+            dgvArt.Columns["IdCategoria"].Visible = false;
 
         }
 

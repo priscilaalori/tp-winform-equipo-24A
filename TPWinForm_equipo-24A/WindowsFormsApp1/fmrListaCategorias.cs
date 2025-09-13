@@ -59,12 +59,31 @@ namespace WindowsFormsApp1
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Categoria seleccionado;
+            try
+            {
+                
+                Categoria seleccionado;
 
-            seleccionado = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
-            frmAltaCategoria frmModificar = new frmAltaCategoria(seleccionado);
-            frmModificar.ShowDialog();
-            cargar();
+                if (dgvCategoria.SelectedRows.Count > 0)
+                {
+
+                    seleccionado = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+
+
+                    frmAltaCategoria frmModificar = new frmAltaCategoria(seleccionado);
+                    frmModificar.ShowDialog();
+                    cargar();
+                }
+
+                else { MessageBox.Show("Debe seleccionar un elemento para modificar");}
+               
+            }
+            catch (Exception ex )
+            {
+
+                throw ex;
+            }
+           
 
         }
 
