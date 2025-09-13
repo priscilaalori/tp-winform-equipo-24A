@@ -43,11 +43,16 @@ namespace WindowsFormsApp1
         private void btnModificarMarca_Click(object sender, EventArgs e)
         {
             Marca seleccionado;
-            seleccionado = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
 
-            frmAgregarMarca frmModificar = new frmAgregarMarca(seleccionado);
-            frmModificar.ShowDialog();
-            cargar();
+            if (dgvMarcas.SelectedRows.Count > 0)
+            {
+                seleccionado = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+
+                frmAgregarMarca frmModificar = new frmAgregarMarca(seleccionado);
+                frmModificar.ShowDialog();
+                cargar();
+            }
+            else { MessageBox.Show("Debe seleccionar un elemento para modificar"); }
         }
 
         private void btnEliminarMarca_Click(object sender, EventArgs e)

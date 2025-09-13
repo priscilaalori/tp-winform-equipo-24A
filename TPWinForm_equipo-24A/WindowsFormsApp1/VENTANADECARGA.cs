@@ -81,7 +81,12 @@ namespace WindowsFormsApp1
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-           // Articulo articuloNuevo = new Articulo();
+           
+            if(txtPrecio.Text == "" && txtNombre.Text == "") 
+            {
+                MessageBox.Show("Debe cargar datos requeridos");
+            }
+            // Articulo articuloNuevo = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
