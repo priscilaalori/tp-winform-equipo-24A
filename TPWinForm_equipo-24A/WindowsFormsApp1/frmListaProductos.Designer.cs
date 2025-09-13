@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btnDetalle = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -59,16 +58,6 @@
             this.btnDetalle.Text = "Ver detalle del artículo";
             this.btnDetalle.UseVisualStyleBackColor = true;
             this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(1026, 234);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(139, 35);
-            this.btnBuscar.TabIndex = 10;
-            this.btnBuscar.Text = "Buscar artículo por código";
-            this.btnBuscar.UseVisualStyleBackColor = true;
             // 
             // btnModificar
             // 
@@ -232,7 +221,6 @@
             this.Controls.Add(this.dgvArt);
             this.Controls.Add(this.agregarArt);
             this.Controls.Add(this.btnDetalle);
-            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.button2);
@@ -250,7 +238,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnDetalle;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button button2;

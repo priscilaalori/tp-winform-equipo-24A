@@ -75,9 +75,9 @@
             this.lblIdMarca.Location = new System.Drawing.Point(46, 157);
             this.lblIdMarca.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIdMarca.Name = "lblIdMarca";
-            this.lblIdMarca.Size = new System.Drawing.Size(51, 13);
+            this.lblIdMarca.Size = new System.Drawing.Size(37, 13);
             this.lblIdMarca.TabIndex = 3;
-            this.lblIdMarca.Text = "ID Marca";
+            this.lblIdMarca.Text = "Marca";
             // 
             // lblDescripcion
             // 
@@ -102,7 +102,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(138, 87);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(121, 20);
             this.txtNombre.TabIndex = 1;
@@ -110,7 +110,7 @@
             // txtDes
             // 
             this.txtDes.Location = new System.Drawing.Point(138, 126);
-            this.txtDes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDes.Margin = new System.Windows.Forms.Padding(2);
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(121, 20);
             this.txtDes.TabIndex = 2;
@@ -118,7 +118,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(138, 52);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(121, 20);
             this.txtCodigo.TabIndex = 0;
@@ -126,7 +126,7 @@
             // btnAceptar
             // 
             this.btnAceptar.Location = new System.Drawing.Point(225, 296);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(92, 25);
             this.btnAceptar.TabIndex = 7;
@@ -137,7 +137,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(333, 296);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(95, 25);
             this.btnCancelar.TabIndex = 6;
@@ -161,14 +161,14 @@
             this.lblIdCat.Location = new System.Drawing.Point(46, 190);
             this.lblIdCat.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIdCat.Name = "lblIdCat";
-            this.lblIdCat.Size = new System.Drawing.Size(68, 13);
+            this.lblIdCat.Size = new System.Drawing.Size(57, 13);
             this.lblIdCat.TabIndex = 14;
-            this.lblIdCat.Text = "ID Categoría";
+            this.lblIdCat.Text = " Categoría";
             // 
             // txtPrecio
             // 
             this.txtPrecio.Location = new System.Drawing.Point(138, 221);
-            this.txtPrecio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(121, 20);
             this.txtPrecio.TabIndex = 5;
@@ -195,7 +195,7 @@
             // txtUrlImagen
             // 
             this.txtUrlImagen.Location = new System.Drawing.Point(138, 256);
-            this.txtUrlImagen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUrlImagen.Margin = new System.Windows.Forms.Padding(2);
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(121, 20);
             this.txtUrlImagen.TabIndex = 15;
@@ -243,7 +243,7 @@
             this.Controls.Add(this.lblIdMarca);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCodigo);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCarga";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ventana de carga";
