@@ -35,19 +35,19 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            MarcaNegocio elementoNegocio = new MarcaNegocio();
+            MarcaNegocio    marcaNegocio = new MarcaNegocio();
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             try
             {
 
                 // Marcas
-                cboIdMarca.DataSource = elementoNegocio.Listar();
+                cboIdMarca.DataSource = marcaNegocio.Listar();
                 cboIdMarca.DisplayMember = "Descripcion";
                 cboIdMarca.ValueMember = "IdMarca";
 
                 // Categorias
                 cboIdCat.DataSource = categoriaNegocio.Listar();
-                cboIdCat.DisplayMember = "IdCategoria";
+                cboIdCat.DisplayMember = "Descripcion";
                 cboIdCat.ValueMember = "IdCategoria";
 
                 if (articulo != null)
@@ -78,6 +78,16 @@ namespace WindowsFormsApp1
         {
             string texto1 = ((TextBox)sender).Text;
         }
+        private bool soloNumero ( string cadena)
+        { foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -86,7 +96,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Debe cargar datos requeridos");
             }
-            else
+            else if (soloNumero(txtPrecio.Text))
             {
                 // Articulo articuloNuevo = new Articulo();
                 ArticuloNegocio negocio = new ArticuloNegocio();
@@ -126,6 +136,7 @@ namespace WindowsFormsApp1
                 }
 
             }
+            else MessageBox.Show("Ingrese los datos que se esperan a cada campo");
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

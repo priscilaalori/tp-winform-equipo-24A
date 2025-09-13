@@ -35,15 +35,15 @@ namespace WindowsFormsApp1
             ArticuloNegocio listaArticulos = new ArticuloNegocio();
             try
             {
-               
+
 
                 articulos = listaArticulos.listarArticulos();
                 dgvArt.DataSource = articulos;
                 ocultarColumnas();
                 cargarImagen(articulos[0].Imagen);
-                
 
-               
+
+
             }
             catch (Exception ex)
             {
@@ -80,12 +80,12 @@ namespace WindowsFormsApp1
         {
             if (dgvArt.CurrentRow != null)
             {
-                Articulo seleccionado = (Articulo) dgvArt.CurrentRow.DataBoundItem;
+                Articulo seleccionado = (Articulo)dgvArt.CurrentRow.DataBoundItem;
                 cargarImagen(seleccionado.Imagen);
             }
         }
 
-        private void cargarImagen(string imagen) 
+        private void cargarImagen(string imagen)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace WindowsFormsApp1
 
                 pictureBoxArt.Load("https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg");
             }
-            
+
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -105,11 +105,11 @@ namespace WindowsFormsApp1
             {
                 Articulo seleccionado;
                 seleccionado = (Articulo)dgvArt.CurrentRow.DataBoundItem;
-                
+
                 frmCarga modificar = new frmCarga(seleccionado);
                 modificar.ShowDialog();
                 cargar();
-                
+
                 if (dgvArt.Rows.Count > 0)
                     dgvArt.Rows[0].Selected = true;
 
@@ -126,7 +126,7 @@ namespace WindowsFormsApp1
                 if (dgvArt.CurrentRow != null)
                 {
                     DialogResult respuesta = MessageBox.Show("¿Estas seguro que queres eliminar?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (respuesta == DialogResult.Yes) 
+                    if (respuesta == DialogResult.Yes)
                     {
                         seleccionado = (Articulo)dgvArt.CurrentRow.DataBoundItem;
                         negocio.eliminar(seleccionado.Id);
@@ -146,7 +146,7 @@ namespace WindowsFormsApp1
 
         private bool validarFiltro()
         {
-            if(cboCampo.SelectedIndex < 0 || cboCriterio.SelectedIndex < 0) {
+            if (cboCampo.SelectedIndex < 0 || cboCriterio.SelectedIndex < 0) {
 
                 MessageBox.Show("Por favor, seleccione el campo requerido");
                 return true;
@@ -174,7 +174,7 @@ namespace WindowsFormsApp1
 
                 MessageBox.Show(ex.ToString());
             }
-      
+
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
@@ -204,7 +204,7 @@ namespace WindowsFormsApp1
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string opcion = cboCampo.SelectedItem.ToString();
-            if(opcion == "Codigo" || opcion == "Nombre" || opcion == "Descripcion"  ) 
+            if (opcion == "Codigo" || opcion == "Nombre" || opcion == "Descripcion")
             {
                 cboCriterio.Items.Clear();
                 cboCriterio.Items.Add("Comienza con");
@@ -213,5 +213,24 @@ namespace WindowsFormsApp1
             }
 
         }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            if (dgvArt.CurrentRow != null)
+            {
+                if (dgvArt.SelectedRows.Count > 0)
+                {
+                    Articulo seleccionado;
+                    seleccionado = (Articulo)dgvArt.CurrentRow.DataBoundItem;
+
+                    VerDetalle detalle = new VerDetalle(seleccionado);
+                    detalle.ShowDialog();
+                }
+                else { MessageBox.Show("Debe seleccionar un elemento para modificar"); }
+            }
+            
+        }
+
+
     }
 }
