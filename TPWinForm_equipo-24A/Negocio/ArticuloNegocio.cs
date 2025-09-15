@@ -14,6 +14,7 @@ namespace Negocio
         public List<Articulo> listarArticulos()
         { 
             List<Articulo> lista = new List<Articulo>();
+            ImagenNegocio imgNeg = new ImagenNegocio();
 
             AccesoDatos datos = new AccesoDatos();
 
@@ -21,14 +22,12 @@ namespace Negocio
             {
 
                 //datos.setearConsulta("select * from Articulos a INNER JOIN IMAGENES I on a.Id=i.IdArticulo");
-                datos.setearConsulta("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion,  " +
-                                      "m.Id AS IdMarca, m.Descripcion AS Marca," +
-                                      "c.Id AS IdCategoria, c.Descripcion AS Categoria," +
-                                      "a.Precio," +
-                                      "I.Imagenurl " +
-                                      "FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id " +
-                                      "INNER JOIN IMAGENES I on a.Id = I.IdArticulo");
-                datos.ejecutarLectura();
+                datos.setearConsulta ("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion," +
+                    "m.Id AS IdMarca, m.Descripcion AS Marca," +
+                    "c.Id AS IdCategoria, c.Descripcion AS Categoria," +
+                   "a.Precio  FROM ARTICULOS a INNER JOIN MARCAS m ON a.IdMarca = m.Id INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id");
+                
+                   datos.ejecutarLectura();
 
                 while (datos.Lector.Read()) 
                 { 
@@ -45,13 +44,14 @@ namespace Negocio
                     articulo.Categoria.IdCategoria = (int)datos.Lector["IdCategoria"];
                     articulo.Categoria.Descripcion = datos.Lector["Categoria"].ToString();
                     articulo.Precio = Convert.ToDecimal(datos.Lector["Precio"]);
-                    articulo.Imagen = datos.Lector["ImagenUrl"].ToString();
+
+                    articulo.Imagenes = imgNeg.listar(articulo.Id);
+                    //articulo.Imagen = datos.Lector["ImagenUrl"].ToString();
 
                     lista.Add(articulo);
 
                 }
-
-                
+  
                 return lista;
             }
             catch (Exception ex)

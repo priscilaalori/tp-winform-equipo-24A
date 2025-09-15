@@ -25,6 +25,8 @@ namespace Dominio
 
         public string Imagen {  get; set; }
 
+        public List<Imagen> Imagenes { get; set; }  
+
         public string PrecioFormateado
         {
             get { return Precio.ToString("N2"); }

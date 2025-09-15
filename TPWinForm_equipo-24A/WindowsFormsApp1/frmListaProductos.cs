@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
                 articulos = listaArticulos.listarArticulos();
                 dgvArt.DataSource = articulos;
                 ocultarColumnas();
-                cargarImagen(articulos[0].Imagen);
+                cargarImagen(articulos[0]);
 
 
 
@@ -81,15 +81,15 @@ namespace WindowsFormsApp1
             if (dgvArt.CurrentRow != null)
             {
                 Articulo seleccionado = (Articulo)dgvArt.CurrentRow.DataBoundItem;
-                cargarImagen(seleccionado.Imagen);
+                cargarImagen(seleccionado);
             }
         }
 
-        private void cargarImagen(string imagen)
+        private void cargarImagen(Articulo articulo)
         {
             try
             {
-                pictureBoxArt.Load(imagen);
+                pictureBoxArt.Load(articulo.Imagenes[0].UTlImagen);
             }
             catch (Exception ex)
             {
@@ -231,6 +231,21 @@ namespace WindowsFormsApp1
             
         }
 
+        private void btnImagenes_Click(object sender, EventArgs e)
+        {
+           
 
+            if (dgvArt.CurrentRow != null)
+            {
+                Articulo seleccionado;
+                seleccionado = (Articulo)dgvArt.CurrentRow.DataBoundItem;
+
+                FrmImagenes frmImagenes = new FrmImagenes(seleccionado.Id);
+                frmImagenes.ShowDialog();
+            }
+            else { MessageBox.Show("Debe seleccionar un elemento para modificar"); }
+        
+        
+        }
     }
 }

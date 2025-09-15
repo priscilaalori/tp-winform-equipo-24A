@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
             labelCategoria.Text = articulo.Categoria.Descripcion;
             try
             {
-                pictureBox.Load(articulo.Imagen);
+                pictureBox.Load(articulo.Imagenes[0].UTlImagen);
             }
             catch (Exception ex)
             {
